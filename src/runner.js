@@ -18,7 +18,7 @@ Q.Sprite.extend("Player",{
       sprite: "player",
       collisionMask: SPRITE_BOX, 
       x: 0,
-      y: 700,
+      y: 500,
       standingPoints: [ [ -16, 44], [ -23, 35 ], [-23,-48], [23,-48], [23, 35 ], [ 16, 44 ]],
       duckingPoints : [ [ -16, 44], [ -23, 35 ], [-23,-10], [23,-10], [23, 35 ], [ 16, 44 ]],
       speed: 500,
@@ -33,8 +33,8 @@ Q.Sprite.extend("Player",{
   step: function(dt) {
     this.p.vx += (this.p.speed - this.p.vx)/4;
 
-    if(this.p.y > 700) {
-      this.p.y = 700;
+    if(this.p.y > 500) {
+      this.p.y = 500;
       this.p.landed = 1;
       this.p.vy = 0;
     } else {
@@ -48,16 +48,16 @@ Q.Sprite.extend("Player",{
     this.p.points = this.p.standingPoints;
     if(this.p.landed) {
       if(Q.inputs['down']) { 
-        this.play("duck_right");
+        this.play("walk_right");
         this.p.points = this.p.duckingPoints;
       } else {
         this.play("walk_right");
       }
     } else {
-      this.play("jump_right");
+      this.play("walk_right");
     }
 
-    this.stage.viewport.centerOn(this.p.x + 700, 400 );
+    this.stage.viewport.centerOn(this.p.x + 300, 400 );
 
   }
 });
@@ -153,14 +153,14 @@ Q.scene("level1",function(stage) {
 
 });
   
-Q.load("player.json, player.png, parallax.png, mainstreet.png", function() {
-    Q.compileSheets("player.png","player.json");
+Q.load("player.json, sprite_run1.png, parallax.png, mainstreet.png", function() {
+    Q.compileSheets("sprite_run1.png","player.json");
     //Q.compileSheets("crates.png","crates.json");
     Q.animations("player", {
-      walk_right: { frames: [0,1,2,3,4,5,6,7,8,9,10], rate: 1/15, flip: false, loop: true },
-      jump_right: { frames: [13], rate: 1/10, flip: false },
-      stand_right: { frames:[14], rate: 1/10, flip: false },
-      duck_right: { frames: [15], rate: 1/10, flip: false },
+      walk_right: { frames: [0,1,2,3,4,5,6], rate: 1/15, flip: "x", loop: true },
+      //jump_right: { frames: [13], rate: 1/10, flip: false },
+      //stand_right: { frames:[14], rate: 1/10, flip: false },
+      //duck_right: { frames: [15], rate: 1/10, flip: false },
     });
     Q.stageScene("level1");
   
