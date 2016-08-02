@@ -31,7 +31,7 @@
 	var initialXpos = 0;
 	var mainCanvas 	= null;
 	var mainStage	= null;
-	var mainContainer = new createjs.Container(); //main container for game screen
+	var mainContainer = new PIXI.Container(); //main container for game screen
 
 	var SOUND_FILES =
 		[
@@ -39,7 +39,7 @@
 			{file:	"", 			volume:	1},
 			{file:	"",				volume:	1}
 		];
-
+/*
 	var COUNTRY	=
 		{
 			EN: {value: 0, language: 'EN'},
@@ -52,9 +52,10 @@
 		};
 
 	var m_unknown_country = false;
-
+*/
 	//Text
-	var TEXT={
+	var TEXT=
+	{
     EN: {
 			//Message box text
 			SPLASH_TEXT_MSG_1:	'ENTER INTO THE SKIN OF A CREDIT CARD HACKER BY PLAYING A QUICK MINIGAME!',
@@ -76,6 +77,7 @@
         },
 	}
 
+/*
 	function GetCurrentCountry()
 	{
 		m_unknown_country = false;
@@ -123,3 +125,4 @@
 	}
 
 	var GAME_COUNTRY               =   GetCurrentCountry();
+*/
