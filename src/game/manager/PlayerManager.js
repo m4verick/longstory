@@ -1,0 +1,4 @@
+PlayerManager.init = function()
+{
+  
+}
